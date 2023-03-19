@@ -1,0 +1,19 @@
+{
+    "name": "blacktauruz/tauruz",
+    "description": "A simple package that brings a lot of abstracted functionality.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Blacktauruz\\Tauruz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Leonardo Cavalari",
+            "email": "leo.cav007@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
