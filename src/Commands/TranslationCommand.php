@@ -2,9 +2,8 @@
 
 namespace Blacktauruz\Tauruz\Commands;
 
-use Directory;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
+use Illuminate\Filesystem\Filesystem;
 
 class TranslationCommand extends Command
 {
@@ -18,16 +17,18 @@ class TranslationCommand extends Command
     {
         $locale = $this->argument('locale');
 
-        if(File::exists(__DIR__."/../../lang/{$locale}")){
-            if(File::exists(lang_path($locale))){
+        (new Filesystem)->ensureDirectoryExists(__DIR__."/../../lang");
+
+        if((new Filesystem)->exists(__DIR__."/../../lang/{$locale}")){
+            if((new Filesystem)->exists(lang_path($locale))){
                 if(!$this->confirm('Translation files already exist for the chosen locale. Do you want to replace?')){
                     $this->info('Translation installation cancelled.');
                     return;
                 }
             }
 
-            File::copyDirectory(__DIR__."/../../lang/{$locale}", lang_path($locale));
-            File::copy(__DIR__."/../../lang/{$locale}.json", lang_path("{$locale}.json"));
+            (new Filesystem)->copyDirectory(__DIR__."/../../lang/{$locale}", lang_path($locale));
+            (new Filesystem)->copy(__DIR__."/../../lang/{$locale}.json", lang_path("{$locale}.json"));
 
             $this->info('Translation files for '.$locale.' installed successfully!');
 
