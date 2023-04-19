@@ -15,5 +15,8 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "illuminate/filesystem": "^10.8",
+        "illuminate/console": "^10.8"
+    }
 }

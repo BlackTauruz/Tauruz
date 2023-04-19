@@ -13,6 +13,9 @@ class TranslationCommand extends Command
 
     protected $description = 'Install translation files for selected language';
 
+    /**
+     * Installs translation files for a chosen locale.
+     */
     public function handle(): void
     {
         $locale = $this->argument('locale');
