@@ -22,6 +22,10 @@ class BreezeOrganizeCommand extends Command
             //Routes`s Path
             (new Filesystem)->deleteDirectory(base_path('/routes'));
             (new Filesystem)->copyDirectory(__DIR__ . "/../../stubs/Breeze/routes", base_path('/routes'));
+
+            //Resource`s Path
+            (new Filesystem)->deleteDirectory(base_path('/resources'));
+            (new Filesystem)->copyDirectory(__DIR__ . "/../../stubs/Breeze/resources", base_path('/resources'));
         }
 
         $this->info('Files successfully organized!');
